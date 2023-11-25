@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import logo from "./img/hola.png";
 
 function App() {
+  const [contenido, setContenido] = useState("");
+  const estilo1 = {backgroundColor: "red"};
+  const estilo2 = {backgroundColor: "yellow"};
+  const estilo3 = {backgroundColor: "green"};
+
+  const [colores, setColores] = useState();
+  
+  const texto = () => {
+    setColores(estilo1);
+    setContenido("Rojo - Stop");
+  };
+
+  const imagen = () => {
+    //setContenido( <img src={logo}/>)
+    setContenido("Amarillo - Alerta");
+    setColores(estilo2);
+  }; 
+
+  const fondo = () => {
+    setColores(estilo3);
+    setContenido("Verde - Avanzar"); 
+  };  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={()=>{texto()}} >Click me</button>
+      <button onClick={()=>{imagen()}} >Click me 2</button>
+      <button onClick={()=>{fondo()}} >Click me 3</button>
+      <div className="traffic" style={colores}>
+        {contenido}
+      </div>         
+    </>
   );
 }
 
